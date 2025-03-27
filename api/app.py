@@ -5,7 +5,7 @@ from groq import Groq
 import os
 
 # Initialize Flask with explicit template folder path
-template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'templates'))
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../templates'))
 app = Flask(__name__, template_folder=template_dir)
 
 # Load environment variables
@@ -50,3 +50,6 @@ def search():
 
     return jsonify({'result': chat_completion.choices[0].message.content})
 
+# Make sure the app runs only when being run directly
+if __name__ == "__main__":
+    app.run()
